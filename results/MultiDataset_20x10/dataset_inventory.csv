@@ -1,0 +1,21 @@
+﻿dataset,corpus,source_file,n_rows,n_features,defective,non_defective,defect_rate,missing_cells_before_imputation,duplicate_feature_rows,unique_feature_vectors,feature_columns_dropped_all_missing,split_strategy,class_group_counts
+prop-2,ck,ck/prop-2.csv,23014,20,2431,20583,0.1056313548274963,0,10365,12649,,StratifiedGroupKFold; identical feature vectors kept together,11146;2037
+prop-1,ck,ck/prop-1.csv,18471,20,2738,15733,0.14823236424665692,0,9799,8672,,StratifiedGroupKFold; identical feature vectors kept together,7136;2197
+eclipse-3.0,eclipse,eclipse/eclipse-3.0.csv,10593,32,1568,9025,0.14802227886340036,0,1788,8805,,StratifiedGroupKFold; identical feature vectors kept together,7304;1539
+prop-3,ck,ck/prop-3.csv,10274,20,1180,9094,0.11485302705859451,0,6378,3896,,StratifiedGroupKFold; identical feature vectors kept together,3598;1005
+prop-4,ck,ck/prop-4.csv,8718,20,840,7878,0.09635237439779766,0,5014,3704,,StratifiedGroupKFold; identical feature vectors kept together,3285;739
+prop-5,ck,ck/prop-5.csv,8516,20,1299,7217,0.15253640206669797,0,4565,3951,,StratifiedGroupKFold; identical feature vectors kept together,3390;1144
+eclipse-2.1,eclipse,eclipse/eclipse-2.1.csv,7888,32,854,7034,0.1082657200811359,0,1268,6620,,StratifiedGroupKFold; identical feature vectors kept together,5806;841
+JM1,mccabe,mccabe/JM1.arff,7782,21,1672,6110,0.21485479311231045,0,0,7782,,StratifiedGroupKFold; identical feature vectors kept together,6110;1672
+eclipse-2.0,eclipse,eclipse/eclipse-2.0.csv,6729,32,975,5754,0.14489522960321,0,1016,5713,,StratifiedGroupKFold; identical feature vectors kept together,4756;962
+mylyn,ambros,ambros/mylyn.csv,1862,15,245,1617,0.13157894736842105,0,266,1596,,StratifiedGroupKFold; identical feature vectors kept together,1397;208
+PC5,mccabe,mccabe/PC5.arff,1711,38,471,1240,0.27527761542957335,0,0,1711,,StratifiedGroupKFold; identical feature vectors kept together,1240;471
+pde,ambros,ambros/pde.csv,1497,15,209,1288,0.1396125584502338,0,64,1433,,StratifiedGroupKFold; identical feature vectors kept together,1225;209
+eclipse34_swt,kim,kim/eclipse34_swt.arff,1485,17,653,832,0.43973063973063975,0,92,1393,,StratifiedGroupKFold; identical feature vectors kept together,757;636
+PC4,mccabe,mccabe/PC4.arff,1287,37,177,1110,0.13752913752913754,0,0,1287,,StratifiedGroupKFold; identical feature vectors kept together,1110;177
+PC3,mccabe,mccabe/PC3.arff,1077,37,134,943,0.1244196843082637,0,0,1077,,StratifiedGroupKFold; identical feature vectors kept together,943;134
+eclipse34_debug,kim,kim/eclipse34_debug.arff,1065,17,263,802,0.24694835680751173,0,41,1024,,StratifiedGroupKFold; identical feature vectors kept together,763;261
+jdt,ambros,ambros/jdt.csv,997,15,206,791,0.20661985957873621,0,27,970,,StratifiedGroupKFold; identical feature vectors kept together,767;205
+camel-1.6,ck,ck/camel-1.6.csv,965,20,188,777,0.19481865284974093,0,84,881,,StratifiedGroupKFold; identical feature vectors kept together,700;184
+xalan-2.6,ck,ck/xalan-2.6.csv,885,20,411,474,0.46440677966101696,0,157,728,,StratifiedGroupKFold; identical feature vectors kept together,406;326
+camel-1.4,ck,ck/camel-1.4.csv,872,20,145,727,0.16628440366972477,0,70,802,,StratifiedGroupKFold; identical feature vectors kept together,658;144

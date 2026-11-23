@@ -1,0 +1,1263 @@
+{
+  "scope": {
+    "dataset_count": 20,
+    "selection_criteria": "20 highest-row-count datasets from the repository after requiring at least 50 defective and 50 non-defective observations",
+    "model_count": 10,
+    "folds_per_dataset": 3,
+    "scoring": "fixed probability threshold 0.5; linear SVM uses zero decision boundary",
+    "metric_aggregation": "mean across folds within dataset, then unweighted macro mean across datasets",
+    "grouping": "identical numeric feature vectors assigned to one fold when group class support permits",
+    "random_state": 42,
+    "datasets": [
+      "prop-2",
+      "prop-1",
+      "eclipse-3.0",
+      "prop-3",
+      "prop-4",
+      "prop-5",
+      "eclipse-2.1",
+      "JM1",
+      "eclipse-2.0",
+      "mylyn",
+      "PC5",
+      "pde",
+      "eclipse34_swt",
+      "PC4",
+      "PC3",
+      "eclipse34_debug",
+      "jdt",
+      "camel-1.6",
+      "xalan-2.6",
+      "camel-1.4"
+    ]
+  },
+  "models": [
+    "Decision Tree",
+    "KNN (k=5)",
+    "XGBoost",
+    "Random Forest",
+    "Linear SVM",
+    "Logistic Regression",
+    "PCA + Logistic Regression",
+    "AdaBoost",
+    "Neural Network (MLP)",
+    "Gaussian Naive Bayes"
+  ],
+  "failures": [],
+  "dataset_inventory": [
+    {
+      "dataset": "prop-2",
+      "corpus": "ck",
+      "source_file": "ck/prop-2.csv",
+      "n_rows": 23014,
+      "n_features": 20,
+      "defective": 2431,
+      "non_defective": 20583,
+      "defect_rate": 0.1056313548274963,
+      "missing_cells_before_imputation": 0,
+      "duplicate_feature_rows": 10365,
+      "unique_feature_vectors": 12649,
+      "feature_columns_dropped_all_missing": "",
+      "split_strategy": "StratifiedGroupKFold; identical feature vectors kept together",
+      "class_group_counts": "11146;2037"
+    },
+    {
+      "dataset": "prop-1",
+      "corpus": "ck",
+      "source_file": "ck/prop-1.csv",
+      "n_rows": 18471,
+      "n_features": 20,
+      "defective": 2738,
+      "non_defective": 15733,
+      "defect_rate": 0.14823236424665692,
+      "missing_cells_before_imputation": 0,
+      "duplicate_feature_rows": 9799,
+      "unique_feature_vectors": 8672,
+      "feature_columns_dropped_all_missing": "",
+      "split_strategy": "StratifiedGroupKFold; identical feature vectors kept together",
+      "class_group_counts": "7136;2197"
+    },
+    {
+      "dataset": "eclipse-3.0",
+      "corpus": "eclipse",
+      "source_file": "eclipse/eclipse-3.0.csv",
+      "n_rows": 10593,
+      "n_features": 32,
+      "defective": 1568,
+      "non_defective": 9025,
+      "defect_rate": 0.14802227886340036,
+      "missing_cells_before_imputation": 0,
+      "duplicate_feature_rows": 1788,
+      "unique_feature_vectors": 8805,
+      "feature_columns_dropped_all_missing": "",
+      "split_strategy": "StratifiedGroupKFold; identical feature vectors kept together",
+      "class_group_counts": "7304;1539"
+    },
+    {
+      "dataset": "prop-3",
+      "corpus": "ck",
+      "source_file": "ck/prop-3.csv",
+      "n_rows": 10274,
+      "n_features": 20,
+      "defective": 1180,
+      "non_defective": 9094,
+      "defect_rate": 0.11485302705859451,
+      "missing_cells_before_imputation": 0,
+      "duplicate_feature_rows": 6378,
+      "unique_feature_vectors": 3896,
+      "feature_columns_dropped_all_missing": "",
+      "split_strategy": "StratifiedGroupKFold; identical feature vectors kept together",
+      "class_group_counts": "3598;1005"
+    },
+    {
+      "dataset": "prop-4",
+      "corpus": "ck",
+      "source_file": "ck/prop-4.csv",
+      "n_rows": 8718,
+      "n_features": 20,
+      "defective": 840,
+      "non_defective": 7878,
+      "defect_rate": 0.09635237439779766,
+      "missing_cells_before_imputation": 0,
+      "duplicate_feature_rows": 5014,
+      "unique_feature_vectors": 3704,
+      "feature_columns_dropped_all_missing": "",
+      "split_strategy": "StratifiedGroupKFold; identical feature vectors kept together",
+      "class_group_counts": "3285;739"
+    },
+    {
+      "dataset": "prop-5",
+      "corpus": "ck",
+      "source_file": "ck/prop-5.csv",
+      "n_rows": 8516,
+      "n_features": 20,
+      "defective": 1299,
+      "non_defective": 7217,
+      "defect_rate": 0.15253640206669797,
+      "missing_cells_before_imputation": 0,
+      "duplicate_feature_rows": 4565,
+      "unique_feature_vectors": 3951,
+      "feature_columns_dropped_all_missing": "",
+      "split_strategy": "StratifiedGroupKFold; identical feature vectors kept together",
+      "class_group_counts": "3390;1144"
+    },
+    {
+      "dataset": "eclipse-2.1",
+      "corpus": "eclipse",
+      "source_file": "eclipse/eclipse-2.1.csv",
+      "n_rows": 7888,
+      "n_features": 32,
+      "defective": 854,
+      "non_defective": 7034,
+      "defect_rate": 0.1082657200811359,
+      "missing_cells_before_imputation": 0,
+      "duplicate_feature_rows": 1268,
+      "unique_feature_vectors": 6620,
+      "feature_columns_dropped_all_missing": "",
+      "split_strategy": "StratifiedGroupKFold; identical feature vectors kept together",
+      "class_group_counts": "5806;841"
+    },
+    {
+      "dataset": "JM1",
+      "corpus": "mccabe",
+      "source_file": "mccabe/JM1.arff",
+      "n_rows": 7782,
+      "n_features": 21,
+      "defective": 1672,
+      "non_defective": 6110,
+      "defect_rate": 0.21485479311231045,
+      "missing_cells_before_imputation": 0,
+      "duplicate_feature_rows": 0,
+      "unique_feature_vectors": 7782,
+      "feature_columns_dropped_all_missing": "",
+      "split_strategy": "StratifiedGroupKFold; identical feature vectors kept together",
+      "class_group_counts": "6110;1672"
+    },
+    {
+      "dataset": "eclipse-2.0",
+      "corpus": "eclipse",
+      "source_file": "eclipse/eclipse-2.0.csv",
+      "n_rows": 6729,
+      "n_features": 32,
+      "defective": 975,
+      "non_defective": 5754,
+      "defect_rate": 0.14489522960321,
+      "missing_cells_before_imputation": 0,
+      "duplicate_feature_rows": 1016,
+      "unique_feature_vectors": 5713,
+      "feature_columns_dropped_all_missing": "",
+      "split_strategy": "StratifiedGroupKFold; identical feature vectors kept together",
+      "class_group_counts": "4756;962"
+    },
+    {
+      "dataset": "mylyn",
+      "corpus": "ambros",
+      "source_file": "ambros/mylyn.csv",
+      "n_rows": 1862,
+      "n_features": 15,
+      "defective": 245,
+      "non_defective": 1617,
+      "defect_rate": 0.13157894736842105,
+      "missing_cells_before_imputation": 0,
+      "duplicate_feature_rows": 266,
+      "unique_feature_vectors": 1596,
+      "feature_columns_dropped_all_missing": "",
+      "split_strategy": "StratifiedGroupKFold; identical feature vectors kept together",
+      "class_group_counts": "1397;208"
+    },
+    {
+      "dataset": "PC5",
+      "corpus": "mccabe",
+      "source_file": "mccabe/PC5.arff",
+      "n_rows": 1711,
+      "n_features": 38,
+      "defective": 471,
+      "non_defective": 1240,
+      "defect_rate": 0.27527761542957335,
+      "missing_cells_before_imputation": 0,
+      "duplicate_feature_rows": 0,
+      "unique_feature_vectors": 1711,
+      "feature_columns_dropped_all_missing": "",
+      "split_strategy": "StratifiedGroupKFold; identical feature vectors kept together",
+      "class_group_counts": "1240;471"
+    },
+    {
+      "dataset": "pde",
+      "corpus": "ambros",
+      "source_file": "ambros/pde.csv",
+      "n_rows": 1497,
+      "n_features": 15,
+      "defective": 209,
+      "non_defective": 1288,
+      "defect_rate": 0.1396125584502338,
+      "missing_cells_before_imputation": 0,
+      "duplicate_feature_rows": 64,
+      "unique_feature_vectors": 1433,
+      "feature_columns_dropped_all_missing": "",
+      "split_strategy": "StratifiedGroupKFold; identical feature vectors kept together",
+      "class_group_counts": "1225;209"
+    },
+    {
+      "dataset": "eclipse34_swt",
+      "corpus": "kim",
+      "source_file": "kim/eclipse34_swt.arff",
+      "n_rows": 1485,
+      "n_features": 17,
+      "defective": 653,
+      "non_defective": 832,
+      "defect_rate": 0.43973063973063975,
+      "missing_cells_before_imputation": 0,
+      "duplicate_feature_rows": 92,
+      "unique_feature_vectors": 1393,
+      "feature_columns_dropped_all_missing": "",
+      "split_strategy": "StratifiedGroupKFold; identical feature vectors kept together",
+      "class_group_counts": "757;636"
+    },
+    {
+      "dataset": "PC4",
+      "corpus": "mccabe",
+      "source_file": "mccabe/PC4.arff",
+      "n_rows": 1287,
+      "n_features": 37,
+      "defective": 177,
+      "non_defective": 1110,
+      "defect_rate": 0.13752913752913754,
+      "missing_cells_before_imputation": 0,
+      "duplicate_feature_rows": 0,
+      "unique_feature_vectors": 1287,
+      "feature_columns_dropped_all_missing": "",
+      "split_strategy": "StratifiedGroupKFold; identical feature vectors kept together",
+      "class_group_counts": "1110;177"
+    },
+    {
+      "dataset": "PC3",
+      "corpus": "mccabe",
+      "source_file": "mccabe/PC3.arff",
+      "n_rows": 1077,
+      "n_features": 37,
+      "defective": 134,
+      "non_defective": 943,
+      "defect_rate": 0.1244196843082637,
+      "missing_cells_before_imputation": 0,
+      "duplicate_feature_rows": 0,
+      "unique_feature_vectors": 1077,
+      "feature_columns_dropped_all_missing": "",
+      "split_strategy": "StratifiedGroupKFold; identical feature vectors kept together",
+      "class_group_counts": "943;134"
+    },
+    {
+      "dataset": "eclipse34_debug",
+      "corpus": "kim",
+      "source_file": "kim/eclipse34_debug.arff",
+      "n_rows": 1065,
+      "n_features": 17,
+      "defective": 263,
+      "non_defective": 802,
+      "defect_rate": 0.24694835680751173,
+      "missing_cells_before_imputation": 0,
+      "duplicate_feature_rows": 41,
+      "unique_feature_vectors": 1024,
+      "feature_columns_dropped_all_missing": "",
+      "split_strategy": "StratifiedGroupKFold; identical feature vectors kept together",
+      "class_group_counts": "763;261"
+    },
+    {
+      "dataset": "jdt",
+      "corpus": "ambros",
+      "source_file": "ambros/jdt.csv",
+      "n_rows": 997,
+      "n_features": 15,
+      "defective": 206,
+      "non_defective": 791,
+      "defect_rate": 0.20661985957873621,
+      "missing_cells_before_imputation": 0,
+      "duplicate_feature_rows": 27,
+      "unique_feature_vectors": 970,
+      "feature_columns_dropped_all_missing": "",
+      "split_strategy": "StratifiedGroupKFold; identical feature vectors kept together",
+      "class_group_counts": "767;205"
+    },
+    {
+      "dataset": "camel-1.6",
+      "corpus": "ck",
+      "source_file": "ck/camel-1.6.csv",
+      "n_rows": 965,
+      "n_features": 20,
+      "defective": 188,
+      "non_defective": 777,
+      "defect_rate": 0.19481865284974093,
+      "missing_cells_before_imputation": 0,
+      "duplicate_feature_rows": 84,
+      "unique_feature_vectors": 881,
+      "feature_columns_dropped_all_missing": "",
+      "split_strategy": "StratifiedGroupKFold; identical feature vectors kept together",
+      "class_group_counts": "700;184"
+    },
+    {
+      "dataset": "xalan-2.6",
+      "corpus": "ck",
+      "source_file": "ck/xalan-2.6.csv",
+      "n_rows": 885,
+      "n_features": 20,
+      "defective": 411,
+      "non_defective": 474,
+      "defect_rate": 0.46440677966101696,
+      "missing_cells_before_imputation": 0,
+      "duplicate_feature_rows": 157,
+      "unique_feature_vectors": 728,
+      "feature_columns_dropped_all_missing": "",
+      "split_strategy": "StratifiedGroupKFold; identical feature vectors kept together",
+      "class_group_counts": "406;326"
+    },
+    {
+      "dataset": "camel-1.4",
+      "corpus": "ck",
+      "source_file": "ck/camel-1.4.csv",
+      "n_rows": 872,
+      "n_features": 20,
+      "defective": 145,
+      "non_defective": 727,
+      "defect_rate": 0.16628440366972477,
+      "missing_cells_before_imputation": 0,
+      "duplicate_feature_rows": 70,
+      "unique_feature_vectors": 802,
+      "feature_columns_dropped_all_missing": "",
+      "split_strategy": "StratifiedGroupKFold; identical feature vectors kept together",
+      "class_group_counts": "658;144"
+    }
+  ],
+  "overall_macro": [
+    {
+      "model": "Decision Tree",
+      "datasets_evaluated": 20,
+      "accuracy_macro_mean": 0.708444765604497,
+      "accuracy_macro_sd": 0.0698168452439144,
+      "precision_macro_mean": 0.3472223999603727,
+      "precision_macro_sd": 0.16713003848556515,
+      "recall_macro_mean": 0.677471677718706,
+      "recall_macro_sd": 0.08057018023252724,
+      "f1_macro_mean": 0.44390086252170996,
+      "f1_macro_sd": 0.13892462723337848,
+      "mcc_macro_mean": 0.3113992749265139,
+      "mcc_macro_sd": 0.1363856026205572,
+      "roc_auc_macro_mean": 0.7402088366670034,
+      "roc_auc_macro_sd": 0.0721892482361249
+    },
+    {
+      "model": "KNN (k=5)",
+      "datasets_evaluated": 20,
+      "accuracy_macro_mean": 0.8334000291083061,
+      "accuracy_macro_sd": 0.04783919011259268,
+      "precision_macro_mean": 0.47486190458152755,
+      "precision_macro_sd": 0.16603287027855457,
+      "recall_macro_mean": 0.27486142348173787,
+      "recall_macro_sd": 0.19078120459162498,
+      "f1_macro_mean": 0.3378641615594894,
+      "f1_macro_sd": 0.19044495611581466,
+      "mcc_macro_mean": 0.26404104781844007,
+      "mcc_macro_sd": 0.1631161006656346,
+      "roc_auc_macro_mean": 0.7225410230893033,
+      "roc_auc_macro_sd": 0.075374072553397
+    },
+    {
+      "model": "XGBoost",
+      "datasets_evaluated": 20,
+      "accuracy_macro_mean": 0.7726951079568347,
+      "accuracy_macro_sd": 0.05938749526243576,
+      "precision_macro_mean": 0.4119641450277915,
+      "precision_macro_sd": 0.17684117051588702,
+      "recall_macro_mean": 0.6371764684297677,
+      "recall_macro_sd": 0.11931955340892504,
+      "f1_macro_mean": 0.48511451317312015,
+      "f1_macro_sd": 0.14445076209318636,
+      "mcc_macro_mean": 0.37120420076789934,
+      "mcc_macro_sd": 0.14345673704607076,
+      "roc_auc_macro_mean": 0.7983195138236432,
+      "roc_auc_macro_sd": 0.06727718649392699
+    },
+    {
+      "model": "Random Forest",
+      "datasets_evaluated": 20,
+      "accuracy_macro_mean": 0.8372328951289788,
+      "accuracy_macro_sd": 0.04252917939987139,
+      "precision_macro_mean": 0.5105571800025681,
+      "precision_macro_sd": 0.17132490039989293,
+      "recall_macro_mean": 0.3663274014478387,
+      "recall_macro_sd": 0.18520831370543636,
+      "f1_macro_mean": 0.41349220160238576,
+      "f1_macro_sd": 0.1796523475146088,
+      "mcc_macro_mean": 0.3322081589176721,
+      "mcc_macro_sd": 0.1657234863959167,
+      "roc_auc_macro_mean": 0.7910662451326538,
+      "roc_auc_macro_sd": 0.07400727500132423
+    },
+    {
+      "model": "Linear SVM",
+      "datasets_evaluated": 20,
+      "accuracy_macro_mean": 0.7284261265145575,
+      "accuracy_macro_sd": 0.05553051765378839,
+      "precision_macro_mean": 0.3687738990031027,
+      "precision_macro_sd": 0.1696908087635382,
+      "recall_macro_mean": 0.6420595011373207,
+      "recall_macro_sd": 0.07935336000062047,
+      "f1_macro_mean": 0.4484038794746531,
+      "f1_macro_sd": 0.12525856239642644,
+      "mcc_macro_mean": 0.32070772454245855,
+      "mcc_macro_sd": 0.11289474518608754,
+      "roc_auc_macro_mean": 0.7628349784501205,
+      "roc_auc_macro_sd": 0.0642301499707191
+    },
+    {
+      "model": "Logistic Regression",
+      "datasets_evaluated": 20,
+      "accuracy_macro_mean": 0.7274852148339648,
+      "accuracy_macro_sd": 0.05460461274360806,
+      "precision_macro_mean": 0.36772919485942096,
+      "precision_macro_sd": 0.16937012970545395,
+      "recall_macro_mean": 0.6450124453263716,
+      "recall_macro_sd": 0.08035471222475896,
+      "f1_macro_mean": 0.4484896341577597,
+      "f1_macro_sd": 0.12425595324566226,
+      "mcc_macro_mean": 0.3208247797408823,
+      "mcc_macro_sd": 0.11304817219736679,
+      "roc_auc_macro_mean": 0.7638522918875056,
+      "roc_auc_macro_sd": 0.06488420973656872
+    },
+    {
+      "model": "PCA + Logistic Regression",
+      "datasets_evaluated": 20,
+      "accuracy_macro_mean": 0.7258407094144406,
+      "accuracy_macro_sd": 0.05629723396438572,
+      "precision_macro_mean": 0.36378553345308257,
+      "precision_macro_sd": 0.17134033437680998,
+      "recall_macro_mean": 0.633902535912334,
+      "recall_macro_sd": 0.08193208314814363,
+      "f1_macro_mean": 0.44290860665669846,
+      "f1_macro_sd": 0.12733938516115512,
+      "mcc_macro_mean": 0.3124937269150128,
+      "mcc_macro_sd": 0.11710426989977797,
+      "roc_auc_macro_mean": 0.7582671380675935,
+      "roc_auc_macro_sd": 0.06520100032093544
+    },
+    {
+      "model": "AdaBoost",
+      "datasets_evaluated": 20,
+      "accuracy_macro_mean": 0.7074291334218028,
+      "accuracy_macro_sd": 0.0655854353765228,
+      "precision_macro_mean": 0.3536867024275713,
+      "precision_macro_sd": 0.16952625563520016,
+      "recall_macro_mean": 0.6912246503104307,
+      "recall_macro_sd": 0.08355937136092122,
+      "f1_macro_mean": 0.4479858903166834,
+      "f1_macro_sd": 0.13186020904439932,
+      "mcc_macro_mean": 0.3216568249480839,
+      "mcc_macro_sd": 0.12380785165738921,
+      "roc_auc_macro_mean": 0.7730246175079912,
+      "roc_auc_macro_sd": 0.0694296365925831
+    },
+    {
+      "model": "Neural Network (MLP)",
+      "datasets_evaluated": 20,
+      "accuracy_macro_mean": 0.7191066164894802,
+      "accuracy_macro_sd": 0.04998365381680835,
+      "precision_macro_mean": 0.35586062419756337,
+      "precision_macro_sd": 0.15573990991823666,
+      "recall_macro_mean": 0.644051896505369,
+      "recall_macro_sd": 0.07866929246531239,
+      "f1_macro_mean": 0.4393079883818502,
+      "f1_macro_sd": 0.1141806442683541,
+      "mcc_macro_mean": 0.3074839067823366,
+      "mcc_macro_sd": 0.10137837123048327,
+      "roc_auc_macro_mean": 0.7594856267239496,
+      "roc_auc_macro_sd": 0.05760176965970906
+    },
+    {
+      "model": "Gaussian Naive Bayes",
+      "datasets_evaluated": 20,
+      "accuracy_macro_mean": 0.7568756790811259,
+      "accuracy_macro_sd": 0.14543635862189422,
+      "precision_macro_mean": 0.4345946044644868,
+      "precision_macro_sd": 0.19092865914041304,
+      "recall_macro_mean": 0.3618501513540283,
+      "recall_macro_sd": 0.17523235514160412,
+      "f1_macro_mean": 0.34578052052930486,
+      "f1_macro_sd": 0.09287349628860503,
+      "mcc_macro_mean": 0.24864122544152084,
+      "mcc_macro_sd": 0.0959118636453529,
+      "roc_auc_macro_mean": 0.722649867224069,
+      "roc_auc_macro_sd": 0.052503782425119806
+    }
+  ],
+  "pooled_confusion": [
+    {
+      "model": "Decision Tree",
+      "held_out_rows": 115688,
+      "accuracy": 0.7093043357997372,
+      "precision": 0.28498669707335617,
+      "recall": 0.6751305600576265,
+      "f1": 0.4007911054094505,
+      "mcc": 0.2889520236545785,
+      "roc_auc_pooled_unavailable": "Use per-dataset fold ROC AUC macro; scores are on different dataset scales."
+    },
+    {
+      "model": "KNN (k=5)",
+      "held_out_rows": 115688,
+      "accuracy": 0.8511686605352327,
+      "precision": 0.47037625861155274,
+      "recall": 0.26640254517077855,
+      "f1": 0.3401548248639534,
+      "mcc": 0.2770144294972731,
+      "roc_auc_pooled_unavailable": "Use per-dataset fold ROC AUC macro; scores are on different dataset scales."
+    },
+    {
+      "model": "XGBoost",
+      "held_out_rows": 115688,
+      "accuracy": 0.7510459166032778,
+      "precision": 0.32484131563762264,
+      "recall": 0.6758508914100486,
+      "f1": 0.4387848555116039,
+      "mcc": 0.3368825565678548,
+      "roc_auc_pooled_unavailable": "Use per-dataset fold ROC AUC macro; scores are on different dataset scales."
+    },
+    {
+      "model": "Random Forest",
+      "held_out_rows": 115688,
+      "accuracy": 0.8461378881128553,
+      "precision": 0.45798040804301393,
+      "recall": 0.37325169578005885,
+      "f1": 0.4112977907130573,
+      "mcc": 0.3261006818830474,
+      "roc_auc_pooled_unavailable": "Use per-dataset fold ROC AUC macro; scores are on different dataset scales."
+    },
+    {
+      "model": "Linear SVM",
+      "held_out_rows": 115688,
+      "accuracy": 0.7046020330544223,
+      "precision": 0.2739241552004543,
+      "recall": 0.6369529983792545,
+      "f1": 0.3830962524369991,
+      "mcc": 0.26256116579392336,
+      "roc_auc_pooled_unavailable": "Use per-dataset fold ROC AUC macro; scores are on different dataset scales."
+    },
+    {
+      "model": "Logistic Regression",
+      "held_out_rows": 115688,
+      "accuracy": 0.7042735633773598,
+      "precision": 0.27441202930214625,
+      "recall": 0.6408547932048743,
+      "f1": 0.38427758980634946,
+      "mcc": 0.26440675687066717,
+      "roc_auc_pooled_unavailable": "Use per-dataset fold ROC AUC macro; scores are on different dataset scales."
+    },
+    {
+      "model": "PCA + Logistic Regression",
+      "held_out_rows": 115688,
+      "accuracy": 0.7121222598713782,
+      "precision": 0.2776694360590922,
+      "recall": 0.6239270064229545,
+      "f1": 0.3843082156326259,
+      "mcc": 0.26332255437969565,
+      "roc_auc_pooled_unavailable": "Use per-dataset fold ROC AUC macro; scores are on different dataset scales."
+    },
+    {
+      "model": "AdaBoost",
+      "held_out_rows": 115688,
+      "accuracy": 0.688429223428532,
+      "precision": 0.2699264182292903,
+      "recall": 0.6826340116453569,
+      "f1": 0.38687509568116485,
+      "mcc": 0.271445360203425,
+      "roc_auc_pooled_unavailable": "Use per-dataset fold ROC AUC macro; scores are on different dataset scales."
+    },
+    {
+      "model": "Neural Network (MLP)",
+      "held_out_rows": 115688,
+      "accuracy": 0.7087511237120531,
+      "precision": 0.2826225659086849,
+      "recall": 0.6647457830602077,
+      "f1": 0.39661903226961787,
+      "mcc": 0.2825676682246375,
+      "roc_auc_pooled_unavailable": "Use per-dataset fold ROC AUC macro; scores are on different dataset scales."
+    },
+    {
+      "model": "Gaussian Naive Bayes",
+      "held_out_rows": 115688,
+      "accuracy": 0.8081650646566627,
+      "precision": 0.3236456341618866,
+      "recall": 0.304820217299958,
+      "f1": 0.31395097220934187,
+      "mcc": 0.20268268029809094,
+      "roc_auc_pooled_unavailable": "Use per-dataset fold ROC AUC macro; scores are on different dataset scales."
+    }
+  ],
+  "majority_class_baseline_macro": {
+    "dataset_count": 20,
+    "accuracy_macro_mean": 0.8118568883968275,
+    "accuracy_macro_sd": 0.10205916390843145,
+    "precision_macro_mean": 0.0,
+    "precision_macro_sd": 0.0,
+    "recall_macro_mean": 0.0,
+    "recall_macro_sd": 0.0,
+    "f1_macro_mean": 0.0,
+    "f1_macro_sd": 0.0,
+    "mcc_macro_mean": 0.0,
+    "mcc_macro_sd": 0.0
+  },
+  "feature_importance": [
+    {
+      "feature": "RFC",
+      "mean_normalized_importance": 0.14654114074713284,
+      "datasets_present": 2
+    },
+    {
+      "feature": "minus",
+      "mean_normalized_importance": 0.1287442722407699,
+      "datasets_present": 2
+    },
+    {
+      "feature": "loc",
+      "mean_normalized_importance": 0.11793024120732092,
+      "datasets_present": 8
+    },
+    {
+      "feature": "amc",
+      "mean_normalized_importance": 0.11526152023709878,
+      "datasets_present": 8
+    },
+    {
+      "feature": "ageWithRespectTo:",
+      "mean_normalized_importance": 0.11110095185161067,
+      "datasets_present": 3
+    },
+    {
+      "feature": "DIT",
+      "mean_normalized_importance": 0.09529087504204796,
+      "datasets_present": 2
+    },
+    {
+      "feature": "pre",
+      "mean_normalized_importance": 0.09522182012956304,
+      "datasets_present": 3
+    },
+    {
+      "feature": "plus",
+      "mean_normalized_importance": 0.0935351982147528,
+      "datasets_present": 2
+    },
+    {
+      "feature": "linesAddedUntil:",
+      "mean_normalized_importance": 0.09288651885183906,
+      "datasets_present": 3
+    },
+    {
+      "feature": "numberOfVersionsUntil:",
+      "mean_normalized_importance": 0.09091146004442377,
+      "datasets_present": 3
+    },
+    {
+      "feature": "change_times",
+      "mean_normalized_importance": 0.08995759962472931,
+      "datasets_present": 2
+    },
+    {
+      "feature": "linesRemovedUntil:",
+      "mean_normalized_importance": 0.08699295933325842,
+      "datasets_present": 3
+    },
+    {
+      "feature": "rfc",
+      "mean_normalized_importance": 0.08577571038579213,
+      "datasets_present": 8
+    },
+    {
+      "feature": "cbo",
+      "mean_normalized_importance": 0.08507588234779044,
+      "datasets_present": 8
+    },
+    {
+      "feature": "ce",
+      "mean_normalized_importance": 0.08096834041399757,
+      "datasets_present": 8
+    },
+    {
+      "feature": "weightedAgeWithRespectTo:",
+      "mean_normalized_importance": 0.07971405486374819,
+      "datasets_present": 3
+    },
+    {
+      "feature": "TLOC",
+      "mean_normalized_importance": 0.07756179954899567,
+      "datasets_present": 3
+    },
+    {
+      "feature": "LOC",
+      "mean_normalized_importance": 0.07399741546993545,
+      "datasets_present": 2
+    },
+    {
+      "feature": "maxLinesRemovedUntil:",
+      "mean_normalized_importance": 0.07162017264844706,
+      "datasets_present": 3
+    },
+    {
+      "feature": "maxLinesAddedUntil:",
+      "mean_normalized_importance": 0.07074663295278137,
+      "datasets_present": 3
+    },
+    {
+      "feature": "avgLinesRemovedUntil:",
+      "mean_normalized_importance": 0.07008247784240428,
+      "datasets_present": 3
+    },
+    {
+      "feature": "codeChurnUntil:",
+      "mean_normalized_importance": 0.06912915910716505,
+      "datasets_present": 3
+    },
+    {
+      "feature": "LOC_CODE_AND_COMMENT",
+      "mean_normalized_importance": 0.06831960255905171,
+      "datasets_present": 4
+    },
+    {
+      "feature": "avgLinesAddedUntil:",
+      "mean_normalized_importance": 0.06673741245565787,
+      "datasets_present": 3
+    },
+    {
+      "feature": "WMC",
+      "mean_normalized_importance": 0.06585945050627076,
+      "datasets_present": 2
+    },
+    {
+      "feature": "MLOC_sum",
+      "mean_normalized_importance": 0.06511106203933205,
+      "datasets_present": 3
+    },
+    {
+      "feature": "maxCodeChurnUntil:",
+      "mean_normalized_importance": 0.06450121628147834,
+      "datasets_present": 3
+    },
+    {
+      "feature": "avgCodeChurnUntil:",
+      "mean_normalized_importance": 0.0631654687465384,
+      "datasets_present": 3
+    },
+    {
+      "feature": "PERCENT_COMMENTS",
+      "mean_normalized_importance": 0.06229388295529278,
+      "datasets_present": 3
+    },
+    {
+      "feature": "cam",
+      "mean_normalized_importance": 0.062181626729025864,
+      "datasets_present": 8
+    },
+    {
+      "feature": "LOC_BLANK",
+      "mean_normalized_importance": 0.060973089151050146,
+      "datasets_present": 4
+    },
+    {
+      "feature": "mfa",
+      "mean_normalized_importance": 0.06058702697840116,
+      "datasets_present": 8
+    },
+    {
+      "feature": "FOUT_sum",
+      "mean_normalized_importance": 0.05764111929353829,
+      "datasets_present": 3
+    },
+    {
+      "feature": "CBO",
+      "mean_normalized_importance": 0.05457876665183609,
+      "datasets_present": 2
+    },
+    {
+      "feature": "HALSTEAD_CONTENT",
+      "mean_normalized_importance": 0.05439583787514556,
+      "datasets_present": 4
+    },
+    {
+      "feature": "avg_cc",
+      "mean_normalized_importance": 0.05036686843656809,
+      "datasets_present": 8
+    },
+    {
+      "feature": "VG_sum",
+      "mean_normalized_importance": 0.048679122100725204,
+      "datasets_present": 3
+    },
+    {
+      "feature": "NBD_sum",
+      "mean_normalized_importance": 0.04852374945284215,
+      "datasets_present": 3
+    },
+    {
+      "feature": "lcom3",
+      "mean_normalized_importance": 0.04699906652009053,
+      "datasets_present": 8
+    },
+    {
+      "feature": "ca",
+      "mean_normalized_importance": 0.04563091805037362,
+      "datasets_present": 8
+    },
+    {
+      "feature": "NIM",
+      "mean_normalized_importance": 0.04397089628579445,
+      "datasets_present": 2
+    },
+    {
+      "feature": "FOUT_avg",
+      "mean_normalized_importance": 0.04391144558103336,
+      "datasets_present": 3
+    },
+    {
+      "feature": "HALSTEAD_VOLUME",
+      "mean_normalized_importance": 0.04327239460379001,
+      "datasets_present": 4
+    },
+    {
+      "feature": "NUM_UNIQUE_OPERANDS",
+      "mean_normalized_importance": 0.0430769020559913,
+      "datasets_present": 4
+    },
+    {
+      "feature": "LOC_TOTAL",
+      "mean_normalized_importance": 0.041349555325419333,
+      "datasets_present": 4
+    },
+    {
+      "feature": "PAR_avg",
+      "mean_normalized_importance": 0.040732335412407034,
+      "datasets_present": 3
+    },
+    {
+      "feature": "MLOC_max",
+      "mean_normalized_importance": 0.040631971352052855,
+      "datasets_present": 3
+    },
+    {
+      "feature": "npm",
+      "mean_normalized_importance": 0.040577996772225185,
+      "datasets_present": 8
+    },
+    {
+      "feature": "FOUT_max",
+      "mean_normalized_importance": 0.04029295273302427,
+      "datasets_present": 3
+    },
+    {
+      "feature": "PAR_sum",
+      "mean_normalized_importance": 0.04022519961050933,
+      "datasets_present": 3
+    },
+    {
+      "feature": "MLOC_avg",
+      "mean_normalized_importance": 0.04021944549257156,
+      "datasets_present": 3
+    },
+    {
+      "feature": "MaximumComplexity",
+      "mean_normalized_importance": 0.04017000782356067,
+      "datasets_present": 2
+    },
+    {
+      "feature": "wmc",
+      "mean_normalized_importance": 0.0386262681215491,
+      "datasets_present": 8
+    },
+    {
+      "feature": "lcom",
+      "mean_normalized_importance": 0.03777667035261723,
+      "datasets_present": 8
+    },
+    {
+      "feature": "LCOM",
+      "mean_normalized_importance": 0.03770881643639326,
+      "datasets_present": 2
+    },
+    {
+      "feature": "HALSTEAD_DIFFICULTY",
+      "mean_normalized_importance": 0.03745499997536567,
+      "datasets_present": 4
+    },
+    {
+      "feature": "NBD_avg",
+      "mean_normalized_importance": 0.03705528245632836,
+      "datasets_present": 3
+    },
+    {
+      "feature": "VG_avg",
+      "mean_normalized_importance": 0.03689952268871852,
+      "datasets_present": 3
+    },
+    {
+      "feature": "HALSTEAD_PROG_TIME",
+      "mean_normalized_importance": 0.036890991263002534,
+      "datasets_present": 4
+    },
+    {
+      "feature": "NUMBER_OF_LINES",
+      "mean_normalized_importance": 0.03587667186631813,
+      "datasets_present": 3
+    },
+    {
+      "feature": "HALSTEAD_EFFORT",
+      "mean_normalized_importance": 0.035260348884546704,
+      "datasets_present": 4
+    },
+    {
+      "feature": "LOC_EXECUTABLE",
+      "mean_normalized_importance": 0.0350594348428843,
+      "datasets_present": 4
+    },
+    {
+      "feature": "NUM_OPERANDS",
+      "mean_normalized_importance": 0.034643340350368146,
+      "datasets_present": 4
+    },
+    {
+      "feature": "NUM_OPERATORS",
+      "mean_normalized_importance": 0.03353360036993139,
+      "datasets_present": 4
+    },
+    {
+      "feature": "AverageComplexity",
+      "mean_normalized_importance": 0.03339263792554302,
+      "datasets_present": 2
+    },
+    {
+      "feature": "HALSTEAD_LENGTH",
+      "mean_normalized_importance": 0.03300104769613816,
+      "datasets_present": 4
+    },
+    {
+      "feature": "CYCLOMATIC_DENSITY",
+      "mean_normalized_importance": 0.0328719274511689,
+      "datasets_present": 3
+    },
+    {
+      "feature": "numberOfAuthorsUntil:",
+      "mean_normalized_importance": 0.032669798776166666,
+      "datasets_present": 3
+    },
+    {
+      "feature": "max_cc",
+      "mean_normalized_importance": 0.032106205097151314,
+      "datasets_present": 8
+    },
+    {
+      "feature": "LOC_COMMENTS",
+      "mean_normalized_importance": 0.03165480986565744,
+      "datasets_present": 4
+    },
+    {
+      "feature": "NORMALIZED_CYLOMATIC_COMPLEXITY",
+      "mean_normalized_importance": 0.030212308993005928,
+      "datasets_present": 3
+    },
+    {
+      "feature": "VG_max",
+      "mean_normalized_importance": 0.03017341499293104,
+      "datasets_present": 3
+    },
+    {
+      "feature": "NUM_UNIQUE_OPERATORS",
+      "mean_normalized_importance": 0.02950791364346329,
+      "datasets_present": 4
+    },
+    {
+      "feature": "dit",
+      "mean_normalized_importance": 0.02869832193507668,
+      "datasets_present": 8
+    },
+    {
+      "feature": "NOM_avg",
+      "mean_normalized_importance": 0.028636612685353557,
+      "datasets_present": 3
+    },
+    {
+      "feature": "NOM_sum",
+      "mean_normalized_importance": 0.02632422103156496,
+      "datasets_present": 3
+    },
+    {
+      "feature": "NOM_max",
+      "mean_normalized_importance": 0.025230137072054168,
+      "datasets_present": 3
+    },
+    {
+      "feature": "NCV",
+      "mean_normalized_importance": 0.024708624983424257,
+      "datasets_present": 2
+    },
+    {
+      "feature": "NIV",
+      "mean_normalized_importance": 0.02418404212940166,
+      "datasets_present": 2
+    },
+    {
+      "feature": "cbm",
+      "mean_normalized_importance": 0.023827517071709773,
+      "datasets_present": 8
+    },
+    {
+      "feature": "HALSTEAD_ERROR_EST",
+      "mean_normalized_importance": 0.023810800528989554,
+      "datasets_present": 4
+    },
+    {
+      "feature": "DECISION_DENSITY",
+      "mean_normalized_importance": 0.023125010664072854,
+      "datasets_present": 2
+    },
+    {
+      "feature": "GLOBAL_DATA_DENSITY",
+      "mean_normalized_importance": 0.022960366858526936,
+      "datasets_present": 1
+    },
+    {
+      "feature": "numberOfFixesUntil:",
+      "mean_normalized_importance": 0.02213041667594539,
+      "datasets_present": 3
+    },
+    {
+      "feature": "NOC",
+      "mean_normalized_importance": 0.0214053115860158,
+      "datasets_present": 2
+    },
+    {
+      "feature": "GLOBAL_DATA_COMPLEXITY",
+      "mean_normalized_importance": 0.02110575497038526,
+      "datasets_present": 1
+    },
+    {
+      "feature": "EDGE_COUNT",
+      "mean_normalized_importance": 0.020574720011330667,
+      "datasets_present": 3
+    },
+    {
+      "feature": "PAR_max",
+      "mean_normalized_importance": 0.0201830287289581,
+      "datasets_present": 3
+    },
+    {
+      "feature": "DESIGN_COMPLEXITY",
+      "mean_normalized_importance": 0.019911753446106517,
+      "datasets_present": 4
+    },
+    {
+      "feature": "CALL_PAIRS",
+      "mean_normalized_importance": 0.019312577398356352,
+      "datasets_present": 3
+    },
+    {
+      "feature": "NOF_avg",
+      "mean_normalized_importance": 0.01917119596460645,
+      "datasets_present": 3
+    },
+    {
+      "feature": "IFANIN",
+      "mean_normalized_importance": 0.019122728874168955,
+      "datasets_present": 2
+    },
+    {
+      "feature": "HALSTEAD_LEVEL",
+      "mean_normalized_importance": 0.018941676970543237,
+      "datasets_present": 4
+    },
+    {
+      "feature": "NODE_COUNT",
+      "mean_normalized_importance": 0.018852866056231144,
+      "datasets_present": 3
+    },
+    {
+      "feature": "CONDITION_COUNT",
+      "mean_normalized_importance": 0.018741882300000203,
+      "datasets_present": 3
+    },
+    {
+      "feature": "NBD_max",
+      "mean_normalized_importance": 0.018466505421767414,
+      "datasets_present": 3
+    },
+    {
+      "feature": "NOF_sum",
+      "mean_normalized_importance": 0.018226921843122763,
+      "datasets_present": 3
+    },
+    {
+      "feature": "NOF_max",
+      "mean_normalized_importance": 0.01801495898536219,
+      "datasets_present": 3
+    },
+    {
+      "feature": "DECISION_COUNT",
+      "mean_normalized_importance": 0.017724715509000375,
+      "datasets_present": 3
+    },
+    {
+      "feature": "dam",
+      "mean_normalized_importance": 0.016513346532757957,
+      "datasets_present": 8
+    },
+    {
+      "feature": "NSF_avg",
+      "mean_normalized_importance": 0.016411506677666984,
+      "datasets_present": 3
+    },
+    {
+      "feature": "DESIGN_DENSITY",
+      "mean_normalized_importance": 0.016246946144503005,
+      "datasets_present": 3
+    },
+    {
+      "feature": "MULTIPLE_CONDITION_COUNT",
+      "mean_normalized_importance": 0.016012235312807783,
+      "datasets_present": 3
+    },
+    {
+      "feature": "NSF_max",
+      "mean_normalized_importance": 0.015830826680150945,
+      "datasets_present": 3
+    },
+    {
+      "feature": "MAINTENANCE_SEVERITY",
+      "mean_normalized_importance": 0.015656263294504418,
+      "datasets_present": 3
+    },
+    {
+      "feature": "NSF_sum",
+      "mean_normalized_importance": 0.015648013916496555,
+      "datasets_present": 3
+    },
+    {
+      "feature": "CYCLOMATIC_COMPLEXITY",
+      "mean_normalized_importance": 0.0156209318647067,
+      "datasets_present": 4
+    },
+    {
+      "feature": "MODIFIED_CONDITION_COUNT",
+      "mean_normalized_importance": 0.015328923457412833,
+      "datasets_present": 3
+    },
+    {
+      "feature": "BRANCH_COUNT",
+      "mean_normalized_importance": 0.015044461814639164,
+      "datasets_present": 4
+    },
+    {
+      "feature": "ic",
+      "mean_normalized_importance": 0.01491447128584227,
+      "datasets_present": 8
+    },
+    {
+      "feature": "ESSENTIAL_COMPLEXITY",
+      "mean_normalized_importance": 0.011731311619165033,
+      "datasets_present": 4
+    },
+    {
+      "feature": "PARAMETER_COUNT",
+      "mean_normalized_importance": 0.010333611367200733,
+      "datasets_present": 3
+    },
+    {
+      "feature": "NSM_avg",
+      "mean_normalized_importance": 0.008987211421649849,
+      "datasets_present": 3
+    },
+    {
+      "feature": "noc",
+      "mean_normalized_importance": 0.00888077883548437,
+      "datasets_present": 8
+    },
+    {
+      "feature": "ESSENTIAL_DENSITY",
+      "mean_normalized_importance": 0.008582013889239602,
+      "datasets_present": 3
+    },
+    {
+      "feature": "ACD",
+      "mean_normalized_importance": 0.008108250618035922,
+      "datasets_present": 3
+    },
+    {
+      "feature": "NSM_sum",
+      "mean_normalized_importance": 0.008065398837621003,
+      "datasets_present": 3
+    },
+    {
+      "feature": "NSM_max",
+      "mean_normalized_importance": 0.007957990054057647,
+      "datasets_present": 3
+    },
+    {
+      "feature": "numberOfRefactoringsUntil:",
+      "mean_normalized_importance": 0.007611299568535457,
+      "datasets_present": 3
+    },
+    {
+      "feature": "moa",
+      "mean_normalized_importance": 0.007301222689127018,
+      "datasets_present": 8
+    },
+    {
+      "feature": "NCM",
+      "mean_normalized_importance": 0.006832215458222864,
+      "datasets_present": 2
+    },
+    {
+      "feature": "NOI",
+      "mean_normalized_importance": 0.0009399585650301523,
+      "datasets_present": 3
+    },
+    {
+      "feature": "NOT",
+      "mean_normalized_importance": 0.0009170186119286084,
+      "datasets_present": 3
+    }
+  ]
+}

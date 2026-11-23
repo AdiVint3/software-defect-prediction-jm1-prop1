@@ -1,0 +1,2 @@
+﻿dataset_count,accuracy_macro_mean,accuracy_macro_sd,precision_macro_mean,precision_macro_sd,recall_macro_mean,recall_macro_sd,f1_macro_mean,f1_macro_sd,mcc_macro_mean,mcc_macro_sd
+20,0.8118568883968275,0.10205916390843145,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0

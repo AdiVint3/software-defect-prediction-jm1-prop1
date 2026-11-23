@@ -9,6 +9,28 @@ This project analyzes two public software defect datasets, compares three superv
 - `results/` - saved analysis summaries in JSON and the ROC and cumulative-gains figures.
 - `reports/JM1/` - full analysis report, conference paper, and editable LaTeX project.
 - `reports/PROP1/` - full analysis report, two-page report, conference paper, and editable LaTeX project.
+- `reports/MultiDataset_20x10/` - full cross-dataset Word report, conference paper (Word), and IEEE LaTeX source with figures.
+- `results/MultiDataset_20x10/` - 20-dataset inventory, all fold and summary metrics, baseline, logs, and visualizations.
+- `scripts/benchmark_multidataset.py` - reproducible 20-dataset, ten-classifier benchmark.
+
+## Expanded 20-dataset benchmark (latest analysis)
+
+The project now includes a classification benchmark using 20 larger eligible datasets from the [DefectData repository](https://github.com/klainfo/DefectData/blob/master/README.md), ten algorithms, and three grouped stratified folds per dataset. The inventory and methodology are in [`dataset_inventory.csv`](results/MultiDataset_20x10/dataset_inventory.csv) and [`RESULTS_SUMMARY.md`](results/MultiDataset_20x10/RESULTS_SUMMARY.md). JM1 and PROP-1 are included.
+
+| Algorithm | Accuracy | Precision | Recall | F1 | MCC | ROC-AUC |
+|---|---:|---:|---:|---:|---:|---:|
+| XGBoost | 0.773 | 0.412 | 0.637 | 0.485 | 0.371 | 0.798 |
+| Random Forest | 0.837 | 0.511 | 0.366 | 0.413 | 0.332 | 0.791 |
+| AdaBoost | 0.707 | 0.354 | 0.691 | 0.448 | 0.322 | 0.773 |
+| Logistic Regression | 0.727 | 0.368 | 0.645 | 0.448 | 0.321 | 0.764 |
+| Linear SVM | 0.728 | 0.369 | 0.642 | 0.448 | 0.321 | 0.763 |
+| Neural Network (MLP) | 0.719 | 0.356 | 0.644 | 0.439 | 0.307 | 0.759 |
+| PCA + Logistic Regression | 0.726 | 0.364 | 0.634 | 0.443 | 0.312 | 0.758 |
+| Decision Tree | 0.708 | 0.347 | 0.677 | 0.444 | 0.311 | 0.740 |
+| Gaussian Naive Bayes | 0.757 | 0.435 | 0.362 | 0.346 | 0.249 | 0.723 |
+| KNN (k=5) | 0.833 | 0.475 | 0.275 | 0.338 | 0.264 | 0.723 |
+
+XGBoost leads on macro ROC-AUC, F1, and MCC; Random Forest leads on accuracy and precision; AdaBoost leads on recall. The majority-class baseline reaches 0.812 accuracy with zero defect recall, so accuracy alone is misleading. Differences are descriptive; no significance test was performed. MLP reached its 55-iteration cap in some folds. Figures are in `results/MultiDataset_20x10/figures/`. The earlier single-dataset reports remain the original JM1/PROP-1 analyses.
 
 ## Findings at a glance
 

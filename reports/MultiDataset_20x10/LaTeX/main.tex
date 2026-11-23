@@ -1,0 +1,61 @@
+\documentclass[conference]{IEEEtran}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage{amsmath}
+\title{Cross-Dataset Software Defect Prediction: A Ten-Algorithm Empirical Comparison on Twenty Larger Public Datasets}
+\author{\IEEEauthorblockN{Aditya Dubey}}
+\begin{document}
+\maketitle
+\begin{abstract}
+Software defect datasets are imbalanced, and accuracy can conceal weak detection of defective modules. We compare ten supervised classifiers across 20 larger datasets from the DefectData repository using three grouped stratified folds per dataset. Methods include Decision Tree, K-nearest neighbors, XGBoost, Random Forest, Linear SVM, Logistic Regression, PCA plus Logistic Regression, AdaBoost, a multilayer perceptron, and Gaussian Naive Bayes. We report accuracy, precision, recall, F1, Matthews correlation coefficient (MCC), and ROC-AUC. Equal-weight macro averages show that XGBoost achieved the highest ROC-AUC (0.798), F1 (0.485), and MCC (0.371); Random Forest had the highest accuracy (0.837) and precision (0.511); AdaBoost had the highest recall (0.691). A majority-class baseline achieved 0.812 accuracy but zero defect recall. Results are descriptive; no hyperparameter search or significance test was performed.
+\end{abstract}
+\begin{IEEEkeywords}
+software defect prediction, classification, cross-dataset evaluation, XGBoost, MCC, ROC-AUC
+\end{IEEEkeywords}
+\section{Introduction}
+Software defect prediction estimates whether a software module is defective from code metrics. It can support review prioritization, but defect labels are commonly imbalanced and false negatives may be costly. Accuracy alone is inadequate; evaluation should include minority-class measures and ranking metrics \cite{menzies2007,kamei2013}.
+
+We extend earlier JM1 and PROP-1 experiments to a 20-dataset comparison and add seven algorithms to the original Decision Tree, KNN, and XGBoost set. We ask how these ten methods compare on defect identification and ranking across larger public data.
+\section{Data and Preparation}
+Data were obtained from the DefectData repository \cite{defectdata}. Datasets were eligible when they contained at least 50 defective and 50 non-defective records; the 20 largest eligible datasets by row count were selected: prop-1, prop-2, prop-3, prop-4, prop-5, JM1, PC3, PC4, PC5, eclipse-2.0, eclipse-2.1, eclipse-3.0, eclipse34\_debug, eclipse34\_swt, mylyn, pde, jdt, camel-1.4, camel-1.6, and xalan-2.6. Together they contain 115,688 records and 16,659 defects. Source-specific target definitions were retained, while identifiers and targets were excluded from predictors.
+
+Numeric predictors were retained, and wholly missing features were removed. No selected dataset had missing feature cells; median imputation remained in pipelines as a safeguard. Scaling was used for distance, linear, and neural methods. Imbalance handling was model-specific. Three stratified grouped folds (seed 42) were applied per dataset, keeping identical feature vectors together where group class support allowed.
+\section{Methods}
+The ten classifiers were Decision Tree, KNN ($k=5$), XGBoost, Random Forest, Linear SVM, Logistic Regression, PCA plus Logistic Regression, AdaBoost, MLP Neural Network, and Gaussian Naive Bayes. PCA was a train-fold-fitted dimensionality-reduction stage in a supervised pipeline. CNN was excluded because the inputs are flat metric vectors; Gaussian Mixture was excluded because this study evaluates supervised classification.
+
+We report accuracy, defect-class precision, recall, F1, MCC, and ROC-AUC. Hard-label metrics use a fixed probability threshold of 0.5; Linear SVM uses its zero decision boundary. ROC-AUC uses continuous model scores \cite{fawcett2006}. Fold metrics were averaged per dataset, then the 20 dataset means were averaged equally. A majority-class model predicting every module non-defective provides an accuracy baseline.
+\section{Results}
+Table~\ref{tab:results} presents the macro averages. XGBoost led in ROC-AUC (0.798), F1 (0.485), and MCC (0.371). Random Forest reached the highest accuracy (0.837) and precision (0.511). AdaBoost had the highest recall (0.691). The majority baseline had 0.812 accuracy with zero recall for defects, illustrating the limitation of accuracy under class imbalance.
+\begin{table*}[t]
+\caption{Equal-weight macro averages across 20 datasets (three folds per dataset)}
+\label{tab:results}\centering\footnotesize
+\begin{tabular}{lrrrrrr}\toprule
+Model & Accuracy & Precision & Recall & F1 & MCC & ROC-AUC\\\midrule
+XGBoost & 0.773 & 0.412 & 0.637 & 0.485 & 0.371 & 0.798\\
+Random Forest & 0.837 & 0.511 & 0.366 & 0.413 & 0.332 & 0.791\\
+AdaBoost & 0.707 & 0.354 & 0.691 & 0.448 & 0.322 & 0.773\\
+Logistic Regression & 0.727 & 0.368 & 0.645 & 0.448 & 0.321 & 0.764\\
+Linear SVM & 0.728 & 0.369 & 0.642 & 0.448 & 0.321 & 0.763\\
+Neural Network (MLP) & 0.719 & 0.356 & 0.644 & 0.439 & 0.307 & 0.759\\
+PCA + Logistic Regression & 0.726 & 0.364 & 0.634 & 0.443 & 0.312 & 0.758\\
+Decision Tree & 0.708 & 0.347 & 0.677 & 0.444 & 0.311 & 0.740\\
+Gaussian Naive Bayes & 0.757 & 0.435 & 0.362 & 0.346 & 0.249 & 0.723\\
+KNN ($k=5$) & 0.833 & 0.475 & 0.275 & 0.338 & 0.264 & 0.723\\\bottomrule
+\end{tabular}
+\end{table*}
+\begin{figure*}[t]\centering\includegraphics[width=0.78\textwidth]{figures/model_performance_boxplots.png}\caption{Distribution of dataset-level scores across 20 datasets.}\label{fig:box}\end{figure*}
+\begin{figure*}[t]\centering\includegraphics[width=0.82\textwidth]{figures/roc_auc_heatmap.png}\caption{Three-fold ROC-AUC means by dataset and classifier.}\label{fig:auc}\end{figure*}
+\begin{figure}[t]\centering\includegraphics[width=\columnwidth]{figures/random_forest_feature_importance.png}\caption{Leading aggregated Random Forest feature importances.}\label{fig:features}\end{figure}
+\section{Discussion}
+XGBoost's ROC-AUC advantage over Random Forest is modest (0.798 versus 0.791) and was not tested for statistical significance. Its accuracy falls below the majority baseline, while it improves defect detection and ranking. Random Forest may suit settings that prioritize precision; AdaBoost may suit settings where missed defects are more costly. Thresholds should reflect inspection capacity and error costs.
+
+Dataset-level variation indicates that no model is uniformly best. Feature importance is descriptive rather than causal; correlated metrics and differing feature schemas constrain interpretation. The MLP reached its 55-iteration cap in some folds and should be treated as a fixed-budget baseline.
+\section{Limitations and Conclusion}
+This study covers 20 datasets from one repository, fixed configurations, and three folds per dataset. No tuning, independent-project validation, or significance test was performed. Grouping identical vectors limits one leakage source but cannot remove other project or temporal dependencies. Results are academic baselines, not evidence of deployment readiness.
+
+Across these data, XGBoost led on macro ROC-AUC, F1, and MCC; Random Forest led on accuracy and precision; AdaBoost led on recall. Multiple metrics are necessary for imbalanced defect prediction. Future work should tune thresholds and model settings, validate on independent projects, and use paired repeated evaluation with statistical comparisons.
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\end{document}
