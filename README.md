@@ -1,4 +1,4 @@
-# Software Defect Prediction on JM1 and PROP-1
+# Software Defect Prediction 
 
 This project analyzes two public software defect datasets, compares three supervised classifiers, and includes the result files, figures, reproducible Python scripts, and research-style Word and LaTeX reports.
 
