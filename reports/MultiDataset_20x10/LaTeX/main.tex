@@ -23,9 +23,29 @@ Data were obtained from the DefectData repository \cite{defectdata}. Datasets we
 
 Numeric predictors were retained, and wholly missing features were removed. No selected dataset had missing feature cells; median imputation remained in pipelines as a safeguard. Scaling was used for distance, linear, and neural methods. Imbalance handling was model-specific. Three stratified grouped folds (seed 42) were applied per dataset, keeping identical feature vectors together where group class support allowed.
 \section{Methods}
-The ten classifiers were Decision Tree, KNN ($k=5$), XGBoost, Random Forest, Linear SVM, Logistic Regression, PCA plus Logistic Regression, AdaBoost, MLP Neural Network, and Gaussian Naive Bayes. PCA was a train-fold-fitted dimensionality-reduction stage in a supervised pipeline. CNN was excluded because the inputs are flat metric vectors; Gaussian Mixture was excluded because this study evaluates supervised classification.
-
-We report accuracy, defect-class precision, recall, F1, MCC, and ROC-AUC. Hard-label metrics use a fixed probability threshold of 0.5; Linear SVM uses its zero decision boundary. ROC-AUC uses continuous model scores \cite{fawcett2006}. Fold metrics were averaged per dataset, then the 20 dataset means were averaged equally. A majority-class model predicting every module non-defective provides an accuracy baseline.
+The ten algorithms below were selected to compare interpretable rules, distance-based classification, linear margins, probabilistic models, ensembles, and a neural network. All configurations were fixed before scoring the held-out folds.
+\subsection{Decision Tree}
+A Decision Tree recursively selects a metric and threshold to make resulting groups more class-pure. Trees capture nonlinear rules without scaling and are relatively easy to inspect. We used Gini splitting, maximum depth 6, minimum leaf size 10, and balanced class weights so minority-class errors receive greater influence.
+\subsection{K-Nearest Neighbors}
+KNN assigns a module the majority label among its closest training examples. The five-neighbor model used Euclidean distance after standard scaling; otherwise metrics with larger numeric ranges could dominate the distance. KNN can model local nonlinear boundaries, but may be sensitive to redundant or noisy variables.
+\subsection{XGBoost}
+XGBoost constructs boosted decision trees sequentially, with each new tree reducing the residual loss while regularization controls model complexity \cite{chen2016}. The configuration used 120 trees, depth 4, learning rate 0.05, row and feature subsampling of 0.8, and L2 regularization of 1. The positive-class weight was set to the negative-to-positive ratio in the training fold.
+\subsection{Random Forest}
+Random Forest trains trees on bootstrap samples and random predictor subsets, then combines their votes. Averaging reduces the variance of a single tree and captures nonlinear feature interactions. We used 120 trees, minimum leaf size 2, and balanced class weighting within each bootstrap sample.
+\subsection{Linear SVM}
+A linear Support Vector Machine selects a separating hyperplane with a wide margin between classes. Its signed decision score indicates distance from the boundary. Predictors were standardized, class weights were balanced, and $C=1$. Labels use the zero-score boundary; continuous scores are retained for ROC-AUC.
+\subsection{Logistic Regression}
+Logistic Regression applies a sigmoid to a weighted sum of metrics to estimate defect probability. It gives a linear decision boundary and probability scores, but correlated metrics can make individual coefficients unstable. We standardized inputs, used balanced class weights and the liblinear solver, and allowed up to 1,500 iterations.
+\subsection{PCA and Logistic Regression}
+Principal Component Analysis (PCA) rotates standardized metrics into orthogonal directions ranked by explained variance. The pipeline retained enough components to explain 95\% of variance, then fit class-balanced Logistic Regression. PCA was fitted inside each training fold to avoid using test data during dimensionality reduction.
+\subsection{AdaBoost}
+AdaBoost combines weak learners in sequence, increasing the influence of examples misclassified by earlier learners. Its final score is a weighted combination of learner outputs. The experiment used 80 decision stumps (depth-one trees), learning rate 0.5, and balanced sample weights.
+\subsection{Neural Network}
+The Multilayer Perceptron (MLP) learns nonlinear metric interactions through connected layers and ReLU activations. It used two hidden layers with 32 and 16 units, L2 penalty 0.001, batch size 256, and early stopping. Predictors were standardized and training examples resampled to balance the classes. The 55-iteration cap was reached in some folds, so the MLP is a fixed-budget baseline.
+\subsection{Gaussian Naive Bayes}
+Gaussian Naive Bayes applies Bayes' rule under conditional independence of predictors within each class and a Gaussian distribution for each metric. It combines metric-wise likelihoods into a class posterior. We standardized inputs, set equal class priors, and used variance smoothing of $10^{-8}$.
+\subsection{Evaluation}
+CNN was excluded because the inputs are flat metric vectors without spatial structure; Gaussian Mixture was excluded because the task is supervised binary classification. We report accuracy, defect-class precision, recall, F1, Matthews correlation coefficient (MCC), and ROC-AUC. Hard-label metrics use a fixed probability threshold of 0.5; Linear SVM uses its zero decision boundary. ROC-AUC uses continuous model scores \cite{fawcett2006}. Fold metrics were averaged per dataset, then the 20 dataset means were averaged equally. A majority-class model predicting every module non-defective provides an accuracy baseline.
 \section{Results}
 Table~\ref{tab:results} presents the macro averages. XGBoost led in ROC-AUC (0.798), F1 (0.485), and MCC (0.371). Random Forest reached the highest accuracy (0.837) and precision (0.511). AdaBoost had the highest recall (0.691). The majority baseline had 0.812 accuracy with zero recall for defects, illustrating the limitation of accuracy under class imbalance.
 \begin{table*}[t]
