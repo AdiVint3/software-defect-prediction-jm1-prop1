@@ -1,17 +1,14 @@
-# Software Defect Prediction 
+# Software Defect Prediction
 
-This project analyzes two public software defect datasets, compares three supervised classifiers, and includes the result files, figures, reproducible Python scripts, and research-style Word and LaTeX reports.
+This repository contains the datasets, analysis scripts, and results for the original JM1 and PROP-1 holdout experiments and the expanded benchmark of ten classifiers across 20 DefectData datasets.
 
-## Project contents
+## Repository layout
 
-- `data/` - source JM1 ARFF and PROP-1 CSV files used for the analysis.
-- `scripts/` - data analysis, plotting, and report-generation code.
-- `results/` - saved analysis summaries in JSON and the ROC and cumulative-gains figures.
-- `reports/JM1/` - full analysis report, conference paper, and editable LaTeX project.
-- `reports/PROP1/` - full analysis report, two-page report, conference paper, and editable LaTeX project.
-- `reports/MultiDataset_20x10/` - full cross-dataset Word report, conference paper (Word), and IEEE LaTeX source with figures.
-- `results/MultiDataset_20x10/` - 20-dataset inventory, all fold and summary metrics, baseline, logs, and visualizations.
-- `scripts/benchmark_multidataset.py` - reproducible 20-dataset, ten-classifier benchmark.
+- `data/DefectData_source/` contains the 20 benchmark inputs. The benchmark loader reads the compressed files, including the split Eclipse archives, directly.
+- `data/JM1.arff` and `data/PROP1.csv` are inputs for the original holdout experiments.
+- `scripts/` contains the analysis and plotting scripts.
+- [Expanded benchmark results](results/MultiDataset_20x10/RESULTS_SUMMARY.md) include the dataset inventory, scores for all 600 model and fold combinations, aggregate metrics, confusion counts by fold, baseline scores, figures, and final run log.
+- [JM1 results](results/JM1/) and [PROP-1 results](results/PROP1/) contain the original holdout metrics and figures.
 
 ## Expanded 20-dataset benchmark (latest analysis)
 
@@ -30,7 +27,7 @@ The project now includes a classification benchmark using 20 larger eligible dat
 | Gaussian Naive Bayes | 0.757 | 0.435 | 0.362 | 0.346 | 0.249 | 0.723 |
 | KNN (k=5) | 0.833 | 0.475 | 0.275 | 0.338 | 0.264 | 0.723 |
 
-XGBoost leads on macro ROC-AUC, F1, and MCC; Random Forest leads on accuracy and precision; AdaBoost leads on recall. The majority-class baseline reaches 0.812 accuracy with zero defect recall, so accuracy alone is misleading. Differences are descriptive; no significance test was performed. MLP reached its 55-iteration cap in some folds. Figures are in `results/MultiDataset_20x10/figures/`. The earlier single-dataset reports remain the original JM1/PROP-1 analyses.
+XGBoost leads on macro ROC-AUC, F1, and MCC; Random Forest leads on accuracy and precision; AdaBoost leads on recall. The majority-class baseline reaches 0.812 accuracy with zero defect recall, so accuracy alone is misleading. Differences are descriptive; no significance test was performed. MLP reached its 55-iteration cap in some folds. Figures are in `results/MultiDataset_20x10/figures/`. The earlier JM1 and PROP-1 holdout results are listed below for comparison.
 
 ## Findings at a glance
 
@@ -58,7 +55,7 @@ JM1 used a stratified 80/20 split with random seed 42. The dataset has 7,782 mod
 
 PROP-1 used the first fold of a shuffled, stratified five-fold group split (seed 42). Identical 20-metric vectors were assigned to the same partition to reduce leakage from repeated patterns. Of 18,471 rows, 14,860 were used for training and 3,611 for testing. XGBoost achieved the strongest ranking (AUC 0.819) and top-decile lift (3.33); the Decision Tree achieved the highest fixed-threshold recall (78.1%).
 
-These metrics describe one holdout split per dataset. They do not establish statistical superiority. The reports discuss class imbalance, data preparation, descriptive statistics, correlations, confusion counts, ROC-AUC, risk-ranked lift, and limitations.
+These metrics describe one holdout split per dataset. They do not establish statistical superiority.
 
 ## Reproducing the analysis
 
@@ -72,24 +69,22 @@ python -m venv .venv
 python -m pip install -r requirements.txt
 ```
 
-Run the analyses and create the reports in this order:
+Run the full benchmark from the repository root:
+
+```bash
+python scripts/benchmark_multidataset.py
+```
+
+It writes CSV and JSON outputs, plus figures, under `results/MultiDataset_20x10/`. For each dataset, it prepares features, trains each model on the same three grouped folds, and scores the held-out fold. Rows with identical predictor values stay together. The script averages scores across folds within each dataset and then gives each dataset equal weight in the final comparison.
+
+To reproduce the separate JM1 and PROP-1 experiments and plots:
 
 ```bash
 python scripts/analyze_jm1.py
-python scripts/build_report.py
+python scripts/plot_jm1.py
 python scripts/analyze_prop1.py
 python scripts/plot_prop1.py
-python scripts/build_prop1_docs.py
-python scripts/build_prop1_two_page.py
 ```
-
-To regenerate the JM1 conference paper DOCX from its LaTeX project, run:
-
-```bash
-python scripts/build_word_from_latex.py
-```
-
-The scripts save JSON results and figures under `results/`, and Word reports under `reports/`. Compile either LaTeX project with a TeX distribution that includes BibTeX and IEEEtran.
 
 ## Data sources and target definitions
 

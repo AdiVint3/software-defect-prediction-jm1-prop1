@@ -1,7 +1,5 @@
 # Expanded 20-dataset benchmark results
 
-This is the empirical analysis output only; no research paper or report has been drafted.
-
 ## Scope and preparation
 
 The benchmark uses 20 larger datasets selected from the [DefectData repository](https://github.com/klainfo/DefectData/blob/master/README.md), requiring at least 50 defective and 50 non-defective observations, then taking the 20 largest eligible datasets by row count. Selected datasets: prop-2, prop-1, eclipse-3.0, prop-3, prop-4, prop-5, eclipse-2.1, JM1, eclipse-2.0, mylyn, PC5, pde, eclipse34_swt, PC4, PC3, eclipse34_debug, jdt, camel-1.6, xalan-2.6, camel-1.4.
